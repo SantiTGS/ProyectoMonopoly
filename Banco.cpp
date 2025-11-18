@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-// ========== destructor ==========
+
 Banco::Banco(int dineroInicial)
     : dineroTotal(dineroInicial), casasDisponibles(32),
       hotelesDisponibles(12), bonoPasarSalida(200) {
@@ -13,7 +13,7 @@ Banco::~Banco() {
     propiedades.clear();
 }
 
-// ===========transacciones DINERO==============
+
 void Banco::pagarAJugador(Jugador* jugador, int monto) {
     if (!jugador || monto <= 0) return;
 
@@ -39,7 +39,7 @@ void Banco::pagarBonoCaerSalida(Jugador* jugador) {
     if (jugador) pagarAJugador(jugador, bonoPasarSalida * 2);
 }
 
-// ========== MANEJO DE PROPIEDADES ==========
+
 void Banco::registrarPropiedad(Propiedad* propiedad) {
     if (propiedad) propiedades.push_back(propiedad);
 }
@@ -118,7 +118,6 @@ vector<Propiedad*> Banco::obtenerPropiedadesDisponibles() {
     return resultado;
 }
 
-// ========== CASAS Y HOTELES ==========
 bool Banco::venderCasa(Jugador* jugador, Propiedad* propiedad) {
     if (!jugador || !propiedad) return false;
 
@@ -162,7 +161,7 @@ bool Banco::venderHotel(Jugador* jugador, Propiedad* propiedad) {
     return false;
 }
 
-// ========== BANCARROTA ==========
+
 void Banco::gestionarBancarrota(Jugador* jugador, Jugador* prestador) {
     if (!jugador) return;
 
@@ -186,7 +185,7 @@ void Banco::gestionarBancarrota(Jugador* jugador, Jugador* prestador) {
     jugador->declararQuiebra();
 }
 
-// ========== INFORMACION ==========
+
 int Banco::getDinero() const { return dineroTotal; }
 int Banco::getCasasDisponibles() const { return casasDisponibles; }
 int Banco::getHotelesDisponibles() const { return hotelesDisponibles; }
