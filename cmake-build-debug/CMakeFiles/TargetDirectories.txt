@@ -1,3 +1,3 @@
-C:/Users/57318/OneDrive/Escritorio/monopoly/cmake-build-debug/CMakeFiles/monopoly.dir
-C:/Users/57318/OneDrive/Escritorio/monopoly/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/57318/OneDrive/Escritorio/monopoly/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/57318/OneDrive/Escritorio/ProyectoMonopoly/cmake-build-debug/CMakeFiles/monopoly.dir
+C:/Users/57318/OneDrive/Escritorio/ProyectoMonopoly/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/57318/OneDrive/Escritorio/ProyectoMonopoly/cmake-build-debug/CMakeFiles/rebuild_cache.dir

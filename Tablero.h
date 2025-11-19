@@ -13,6 +13,8 @@ struct NodoCasilla {
     NodoCasilla* siguiente;  // Apunta al siguiente nodo (el último apunta al primero)
     NodoCasilla* anterior;   // Apunta al nodo anterior (el primero apunta al último)
 
+    //pre: cas != nullptr
+    //post: NodoCasilla creado con casilla asignada, siguiente = nullptr, anterior = nullptr
     NodoCasilla(Casilla* cas) : casilla(cas), siguiente(nullptr), anterior(nullptr) {}
 };
 
@@ -29,70 +31,61 @@ private:
 
     // ========== FUNCIONES PRIVADAS ==========
 
-    // Inserta casilla manteniendo la circularidad
-    // Pre: casilla != nullptr
-    // Post: Casilla insertada, enlaces circulares actualizados
+    //pre: casilla != nullptr
+    //post: casilla insertada al final, enlaces circulares actualizados, indice actualizado, numCasillas++
     void insertarCasilla(Casilla* casilla);
 
-    // Libera memoria del tablero
-    // Pre: Tablero creado
-    // Post: Todos los nodos eliminados, inicio = nullptr
+    //pre: Tablero creado
+    //post: todos los nodos y casillas eliminados, inicio = nullptr, numCasillas = 0, indice vaciado
     void destruirTablero();
 
 public:
     // ========== CONSTRUCTOR ==========
 
-    // Pre: Ninguna
-    // Post: Tablero circular con 40 casillas creado
+    //pre: ninguna
+    //post: Tablero creado vacío con inicio = nullptr, numCasillas = 0, crearTablero() invocado (40 casillas creadas y enlazadas circularmente)
     Tablero();
 
     // ========== DESTRUCTOR ==========
 
-    // Pre: Tablero existe
-    // Post: Memoria liberada
+    //pre: Tablero existe
+    //post: destruirTablero() invocado, toda la memoria liberada
     ~Tablero();
 
     // ========== FUNCIONES DE ACCESO ==========
 
-    // Obtiene casilla por posición
-    // Pre: 0 <= posicion < 40
-    // Post: Retorna casilla en esa posición
+    //pre: 0 <= posicion < 40
+    //post: retorna puntero a casilla en posicion (usando indice), nullptr si no existe
     Casilla* obtenerCasilla(int posicion);
 
-    // Avanza N casillas aprovechando circularidad
-    // Pre: 0 <= posicionActual < 40, pasos >= 0
-    // Post: Retorna casilla después de avanzar (da vueltas si pasos > 40)
+    //pre: 0 <= posicionActual < 40, pasos >= 0
+    //post: retorna casilla después de avanzar pasos desde posicionActual (aprovecha circularidad)
     Casilla* avanzarDesde(int posicionActual, int pasos);
 
-    // Retrocede N casillas usando enlace anterior
-    // Pre: 0 <= posicionActual < 40, pasos >= 0
-    // Post: Retorna casilla después de retroceder circularmente
+    //pre: 0 <= posicionActual < 40, pasos >= 0
+    //post: retorna casilla después de retroceder pasos desde posicionActual (aprovecha circularidad)
     Casilla* retrocederDesde(int posicionActual, int pasos);
 
-    // Obtiene número de casillas
-    // Pre: Tablero existe
-    // Post: Retorna numCasillas
+    //pre: ninguna
+    //post: retorna numCasillas
     int getNumCasillas() const;
 
     // ========== FUNCIONES DE BUSQUEDA ==========
 
-    // Busca casilla por nombre recorriendo el círculo
-    // Pre: Tablero creado
-    // Post: Retorna casilla encontrada o nullptr
+    //pre: Tablero creado con casillas
+    //post: retorna primera casilla con nombre coincidente (recorrido circular), nullptr si no existe
     Casilla* buscarCasillaPorNombre(string nombre);
 
     // ========== FUNCIONES DE VISUALIZACION ==========
 
-    // Muestra tablero completo
-    // Pre: Tablero creado con casillas
-    // Post: Imprime información de las 40 casillas
+    //pre: Tablero creado con casillas
+    //post: información de las 40 casillas mostrada en consola
     void mostrarTablero() const;
 
     // ========== CREACION DE TABLERO CIRCULAR ==========
 
-    // Crea las 40 casillas del Monopoly conectadas circularmente
-    // Pre: Tablero vacío
-    // Post: 40 casillas enlazadas en círculo, inicio apunta a casilla 0
+    //pre: Tablero vacío (inicio == nullptr)
+    //post: 40 casillas del Monopoly creadas y enlazadas circularmente, inicio apunta a casilla 0 (Salida)
     void crearTablero();
 };
 

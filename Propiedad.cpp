@@ -1,121 +1,184 @@
 #include "Propiedad.h"
 #include "Jugador.h"
 #include <iostream>
+using namespace std;
 
-// Constructor para calles
+// ========== CONSTRUCTORES ==========
+
+// Constructor para CALLES (con color y posibilidad de construcción)
 Propiedad::Propiedad(string nombre, int posicion, int precio, int renta,
                      int color, int precioCasa)
     : Casilla(nombre, TIPO_PROPIEDAD, posicion),
-      tipoPropiedad(PROP_CALLE), color(color), precioCompra(precio),
-      rentaBase(renta), dueno(nullptr), hipotecada(false),
-      numCasas(0), numHoteles(0), precioCasa(precioCasa) {
+      tipoPropiedad(PROP_CALLE),
+      color(color),
+      precioCompra(precio),
+      rentaBase(renta),
+      dueno(nullptr),
+      hipotecada(false),
+      numCasas(0),
+      numHoteles(0),
+      precioCasa(precioCasa) {
 }
 
-// Constructor para estaciones y servicios
+// Constructor para ESTACIONES y SERVICIOS
 Propiedad::Propiedad(string nombre, int posicion, int precio, int tipo)
     : Casilla(nombre, (tipo == PROP_ESTACION ? TIPO_ESTACION : TIPO_SERVICIO), posicion),
-      tipoPropiedad(tipo), color(COLOR_SIN_COLOR), precioCompra(precio),
-      rentaBase(25), dueno(nullptr), hipotecada(false),
-      numCasas(0), numHoteles(0), precioCasa(0) {
+      tipoPropiedad(tipo),
+      color(COLOR_SIN_COLOR),
+      precioCompra(precio),
+      rentaBase(25),
+      dueno(nullptr),
+      hipotecada(false),
+      numCasas(0),
+      numHoteles(0),
+      precioCasa(0) {
 }
 
 Propiedad::~Propiedad() {
 }
 
-void Propiedad::accionAlCaer(Jugador* jugador) {
-    cout << jugador->getNombre() << " cayo en " << nombre << endl;
+// ========== ACCIÓN AL CAER ==========
 
-    if (estaDisponible()) {
-        cout << "Esta propiedad esta disponible por $" << precioCompra << endl;
-        cout << "Usa el comando 'comprar' para adquirirla." << endl;
-    } else if (dueno == jugador) {
-        cout << "Esta es tu propiedad!" << endl;
-    } else {
-        if (hipotecada) {
-            cout << "Esta propiedad esta hipotecada, no pagas renta." << endl;
-        } else {
-            int renta = calcularRenta();
-            cout << "Debes pagar renta de $" << renta << " a " << dueno->getNombre() << endl;
-            jugador->pagarRenta(renta, dueno);
-        }
+void Propiedad::accionAlCaer(Jugador* jugador) {
+    // Validar jugador
+    if (jugador == nullptr) {
+        return;
     }
+
+    cout << "\n>>> " << jugador->getNombre()
+         << " cayo en " << nombre << endl;
+
+    // Caso 1: Propiedad disponible
+    if (estaDisponible()) {
+        cout << "    Disponible por $" << precioCompra << endl;
+        cout << "    Usa 'comprar' para adquirirla" << endl;
+        return;
+    }
+
+    // Caso 2: Es del jugador
+    if (dueno == jugador) {
+        cout << "    Esta es tu propiedad!" << endl;
+        return;
+    }
+
+    // Caso 3: Es de otro jugador
+    if (hipotecada) {
+        cout << "    Esta hipotecada, no pagas renta" << endl;
+        return;
+    }
+
+    // Cobrar renta
+    int renta = calcularRenta();
+    cout << "    Debes pagar renta de $" << renta
+         << " a " << dueno->getNombre() << endl;
+
+    jugador->pagarRenta(renta, dueno);
 }
 
 // ========== COMPRA Y VENTA ==========
-void Propiedad::comprar(Jugador* jugador) {
-    if (!estaDisponible()) {
-        cout << "Esta propiedad ya tiene dueno." << endl;
+
+void Propiedad::asignarDueno(Jugador* jugador) {
+    // SOLO asignar dueño, NO cobrar dinero
+    // El cobro lo hace el Banco
+
+    if (jugador == nullptr) {
         return;
     }
 
-    if (jugador->getDinero() < precioCompra) {
-        cout << "No tienes suficiente dinero." << endl;
-        return;
-    }
+    // Asignar dueño
+    dueno = jugador;
 
-    if (jugador->pagarDinero(precioCompra)) {
-        dueno = jugador;
-        jugador->agregarPropiedad(this);
-        cout << jugador->getNombre() << " compro " << nombre << " por $" << precioCompra << endl;
-    }
+    // Agregar propiedad al jugador
+    jugador->agregarPropiedad(this);
 }
 
 bool Propiedad::estaDisponible() const {
-    return dueno == nullptr;
+    return (dueno == nullptr);
 }
 
 void Propiedad::liberar() {
+    // Si tiene dueño, remover la propiedad de su lista
     if (dueno != nullptr) {
         dueno->removerPropiedad(this);
         dueno = nullptr;
-        numCasas = 0;
-        numHoteles = 0;
-        hipotecada = false;
     }
+
+    // Limpiar construcciones
+    numCasas = 0;
+    numHoteles = 0;
+    hipotecada = false;
 }
 
 // ========== RENTA ==========
-int Propiedad::calcularRenta() const {
-    if (hipotecada) return 0;
 
-    if (tipoPropiedad == PROP_CALLE) {
-        if (numHoteles > 0) {
-            return rentaBase * 50;
-        } else if (numCasas > 0) {
-            return rentaBase * (numCasas + 1);
-        } else {
-            return rentaBase;
-        }
-    } else {
+int Propiedad::calcularRenta() const {
+    // Si está hipotecada, no cobra
+    if (hipotecada) {
+        return 0;
+    }
+
+    // Solo las calles tienen construcciones
+    if (tipoPropiedad != PROP_CALLE) {
         return rentaBase;
     }
+
+    // Calcular según construcciones
+    if (numHoteles > 0) {
+        // Hotel multiplica x50
+        return rentaBase * 50;
+    }
+
+    if (numCasas > 0) {
+        // Cada casa aumenta la renta
+        return rentaBase * (numCasas + 1);
+    }
+
+    // Sin construcciones
+    return rentaBase;
 }
 
-// ========== CONSTRUCCION (SIMPLIFICADO) ==========
+// ========== CONSTRUCCIÓN ==========
+
 bool Propiedad::construirCasa() {
+    // Validar que sea una calle
     if (tipoPropiedad != PROP_CALLE) {
-        cout << "Solo se pueden construir casas en calles." << endl;
+        cout << "Solo se pueden construir casas en calles" << endl;
         return false;
     }
 
-    if (numCasas >= 4) {
-        cout << "Ya tienes 4 casas. Construye un hotel." << endl;
-        return false;
-    }
-
+    // Validar que no esté hipotecada
     if (hipotecada) {
-        cout << "No puedes construir en propiedades hipotecadas." << endl;
+        cout << "No puedes construir en propiedades hipotecadas" << endl;
         return false;
     }
 
-    if (dueno->getDinero() < precioCasa) {
-        cout << "No tienes suficiente dinero para construir una casa." << endl;
+    // Validar límite de casas
+    if (numCasas >= 4) {
+        cout << "Ya tienes 4 casas. Construye un hotel" << endl;
         return false;
     }
 
-    if (dueno->pagarDinero(precioCasa)) {
+    // Validar que el dueño tenga dinero
+    if (dueno == nullptr) {
+        return false;
+    }
+
+    int dineroDisponible = dueno->getDinero();
+
+    if (dineroDisponible < precioCasa) {
+        cout << "No tienes suficiente dinero para construir" << endl;
+        cout << "Necesitas: $" << precioCasa
+             << " | Tienes: $" << dineroDisponible << endl;
+        return false;
+    }
+
+    // Construir casa
+    bool pudoPagar = dueno->pagarDinero(precioCasa);
+
+    if (pudoPagar) {
         numCasas++;
-        cout << "Casa construida en " << nombre << ". Total: " << numCasas << " casas." << endl;
+        cout << "Casa construida en " << nombre
+             << ". Total: " << numCasas << " casa(s)" << endl;
         return true;
     }
 
@@ -123,30 +186,50 @@ bool Propiedad::construirCasa() {
 }
 
 bool Propiedad::construirHotel() {
+    // Validar que sea una calle
     if (tipoPropiedad != PROP_CALLE) {
-        cout << "Solo se pueden construir hoteles en calles." << endl;
+        cout << "Solo se pueden construir hoteles en calles" << endl;
         return false;
     }
 
+    // Validar que no esté hipotecada
+    if (hipotecada) {
+        cout << "No puedes construir en propiedades hipotecadas" << endl;
+        return false;
+    }
+
+    // Validar que tenga 4 casas
     if (numCasas < 4) {
-        cout << "Necesitas 4 casas antes de construir un hotel." << endl;
+        cout << "Necesitas 4 casas antes de construir un hotel" << endl;
         return false;
     }
 
+    // Validar que no tenga hotel ya
     if (numHoteles >= 1) {
-        cout << "Ya tienes un hotel en esta propiedad." << endl;
+        cout << "Ya tienes un hotel en esta propiedad" << endl;
+        return false;
+    }
+
+    // Validar dinero (hotel cuesta 5x el precio de una casa)
+    if (dueno == nullptr) {
         return false;
     }
 
     int precioHotel = precioCasa * 5;
-    
-    if (dueno->getDinero() < precioHotel) {
-        cout << "No tienes suficiente dinero para construir un hotel." << endl;
+    int dineroDisponible = dueno->getDinero();
+
+    if (dineroDisponible < precioHotel) {
+        cout << "No tienes suficiente dinero para el hotel" << endl;
+        cout << "Necesitas: $" << precioHotel
+             << " | Tienes: $" << dineroDisponible << endl;
         return false;
     }
 
-    if (dueno->pagarDinero(precioHotel)) {
-        numCasas = 0;
+    // Construir hotel
+    bool pudoPagar = dueno->pagarDinero(precioHotel);
+
+    if (pudoPagar) {
+        numCasas = 0;      // Las casas se convierten en hotel
         numHoteles = 1;
         cout << "Hotel construido en " << nombre << "!" << endl;
         return true;
@@ -155,21 +238,29 @@ bool Propiedad::construirHotel() {
     return false;
 }
 
-// ========== HIPOTECA (SIMPLIFICADO) ==========
+// ========== HIPOTECA ==========
+
 void Propiedad::hipotecar() {
+    // Validar que no esté ya hipotecada
     if (hipotecada) {
-        cout << nombre << " ya esta hipotecada." << endl;
+        cout << nombre << " ya esta hipotecada" << endl;
         return;
     }
 
+    // Validar que no tenga construcciones
     if (numCasas > 0 || numHoteles > 0) {
-        cout << "Debes vender las construcciones antes de hipotecar." << endl;
+        cout << "Debes vender las construcciones antes de hipotecar" << endl;
         return;
     }
 
+    // Hipotecar (vale la mitad del precio)
     hipotecada = true;
     int valorHipoteca = precioCompra / 2;
-    dueno->recibirDinero(valorHipoteca);
+
+    if (dueno != nullptr) {
+        dueno->recibirDinero(valorHipoteca);
+    }
+
     cout << nombre << " hipotecada por $" << valorHipoteca << endl;
 }
 
@@ -178,6 +269,7 @@ bool Propiedad::estaHipotecada() const {
 }
 
 // ========== GETTERS ==========
+
 int Propiedad::getTipoPropiedad() const {
     return tipoPropiedad;
 }
@@ -222,38 +314,50 @@ string Propiedad::getNombreColor() const {
     return "Sin color";
 }
 
+// ========== INFORMACIÓN ==========
+
 void Propiedad::mostrarInfo() const {
-    cout << "\n===== " << nombre << " =====" << endl;
-    
+    cout << "\n========================================" << endl;
+    cout << "  " << nombre << endl;
+    cout << "========================================" << endl;
+
+    // Tipo
     if (tipoPropiedad == PROP_CALLE) {
-        cout << "Tipo: Calle" << endl;
-        cout << "Color: " << getNombreColor() << endl;
+        cout << "Tipo:   Calle " << getNombreColor() << endl;
     } else if (tipoPropiedad == PROP_ESTACION) {
-        cout << "Tipo: Estacion" << endl;
+        cout << "Tipo:   Estacion de Tren" << endl;
     } else {
-        cout << "Tipo: Servicio" << endl;
+        cout << "Tipo:   Servicio Publico" << endl;
     }
 
+    // Precio
     cout << "Precio: $" << precioCompra << endl;
-    cout << "Renta base: $" << rentaBase << endl;
+    cout << "Renta:  $" << rentaBase;
 
+    if (numCasas > 0 || numHoteles > 0) {
+        int rentaActual = calcularRenta();
+        cout << " (Actual: $" << rentaActual << ")";
+    }
+    cout << endl;
+
+    // Dueño y estado
     if (dueno != nullptr) {
-        cout << "Dueno: " << dueno->getNombre() << endl;
-        
+        cout << "\nDueno:  " << dueno->getNombre() << endl;
+
         if (numCasas > 0) {
-            cout << "Casas: " << numCasas << endl;
+            cout << "Casas:  " << numCasas << " casa(s)" << endl;
         }
-        
+
         if (numHoteles > 0) {
-            cout << "Hoteles: " << numHoteles << endl;
+            cout << "Hotel:  SI" << endl;
         }
-        
+
         if (hipotecada) {
-            cout << "Estado: HIPOTECADA" << endl;
+            cout << "\n*** HIPOTECADA ***" << endl;
         }
     } else {
-        cout << "Estado: Disponible para compra" << endl;
+        cout << "\nEstado: DISPONIBLE PARA COMPRA" << endl;
     }
 
-    cout << "=======================" << endl;
+    cout << "========================================\n" << endl;
 }

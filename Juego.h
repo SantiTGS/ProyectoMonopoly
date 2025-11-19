@@ -26,78 +26,78 @@ private:
     int dado1;
     int dado2;
 
-
-     //Lanza los dados
-     //Suma de ambos dados
-     //Precondicion: Ninguna
-     //Postcondicion: dado1 y dado2 tienen valores entre 1 y 6
-
+    //Lanza los dados
+    //pre: ninguna
+    //post: dado1 y dado2 tienen valores entre 1 y 6, retorna suma de ambos dados
     int lanzarDados();
 
 public:
-    //Constructor
+    //pre: ninguna
+    //post: Juego creado con turnoActual = 0, juegoTerminado = false, punteros inicializados en nullptr
     Juego();
 
-
- //Destructor
+    //pre: Juego existe
+    //post: Memoria de jugadores, tablero, banco y mazos liberada
     ~Juego();
 
-    //Inicializa el juego
+    //pre: Juego creado
+    //post: tablero, banco y mazos de cartas inicializados, propiedades registradas en banco
     void inicializar();
 
-
-    //Agrega un jugador al juego
+    //pre: nombre no vacío, jugadores.size() < 8
+    //post: nuevo jugador agregado al vector jugadores con $1500
     void agregarJugador(string nombre);
 
-
-//Inicia el juego
+    //pre: jugadores.size() >= 2, inicializar() ejecutado
+    //post: turnoActual = 0, mensaje de inicio mostrado
     void iniciar();
 
-
-//Procesa un turno completo
+    //pre: !juegoTerminado
+    //post: turno del jugador actual procesado (cárcel verificada, mensaje mostrado)
     void procesarTurno();
 
-
-//Lanza los dados y mueve al jugador
+    //pre: jugador actual no está en cárcel
+    //post: dados lanzados, jugador movido, acción de casilla ejecutada
     void tirarDados();
 
-
-//Compra la propiedad actual
+    //pre: jugador actual en casilla de tipo propiedad disponible, jugador tiene dinero suficiente
+    //post: si exitoso, propiedad comprada y asignada a jugador, dinero deducido
     void comprarPropiedad();
 
-    //Construye casa en una propiedad
+    //pre: nombrePropiedad existe, jugador actual es dueño, casasDisponibles > 0
+    //post: si exitoso, casa construida en propiedad, dinero deducido, casasDisponibles--
     void construirCasa(string nombrePropiedad);
 
-
-    //Construye hotel en una propiedad
+    //pre: nombrePropiedad existe, jugador actual es dueño, hotelesDisponibles > 0
+    //post: si exitoso, hotel construido en propiedad, dinero deducido, hotelesDisponibles--
     void construirHotel(string nombrePropiedad);
 
-
- //Hipoteca una propiedad
+    //pre: nombrePropiedad existe, jugador actual es dueño, propiedad sin construcciones
+    //post: propiedad hipotecada, jugador recibe valorHipoteca
     void hipotecar(string nombrePropiedad);
 
-
- //Muestra el estado del juego
+    //pre: ninguna
+    //post: estado de todos los jugadores activos e información del turno mostrada
     void mostrarEstado();
 
-
-    //Muestra propiedades del jugador actual
+    //pre: jugador actual tiene propiedades
+    //post: lista de propiedades del jugador actual mostrada
     void mostrarPropiedades();
 
-
-     //Termina el turno actual
+    //pre: ninguna
+    //post: turnoActual avanza al siguiente jugador, si solo queda 1 activo entonces juegoTerminado = true
     void terminarTurno();
 
-
-//Verifica si el juego termino
+    //pre: ninguna
+    //post: retorna true si juegoTerminado == true, false en caso contrario
     bool haTerminado();
 
-
-     //Obtiene el jugador actual
+    //pre: jugadores.size() > 0
+    //post: retorna puntero al jugador en turnoActual
     Jugador* getJugadorActual();
 
-
-//Muestra el ganador
+    //pre: juegoTerminado == true
+    //post: ganador con mayor fortuna mostrado
     void mostrarGanador();
 };
 
