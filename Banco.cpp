@@ -11,11 +11,11 @@ Banco::Banco(int dineroInicial)
       hotelesDisponibles(12),
       bonoPasarSalida(200) {
     cout << "\n[BANCO] Inicializado con $" << dineroTotal << endl;
-    cout << "[BANCO] Casas disponibles: 32 | Hoteles disponibles: 12\n" << endl;
 }
 
 Banco::~Banco() {
-    propiedades.clear();
+    propiedadesPorNombre.clear();
+    propiedadesPorPosicion.clear();
 }
 
 // ========== TRANSACCIONES DE DINERO ==========
@@ -75,7 +75,7 @@ void Banco::pagarBonoCaerSalida(Jugador* jugador) {
     }
 }
 
-// ========== GESTIÓN DE PROPIEDADES ==========
+// ========== GESTIÓN DE PROPIEDADES (CON TABLA HASH) ==========
 
 void Banco::registrarPropiedad(Propiedad* propiedad) {
     // Validar que la propiedad exista
@@ -83,19 +83,20 @@ void Banco::registrarPropiedad(Propiedad* propiedad) {
         return;
     }
 
-    // Agregar a la lista de propiedades del banco
-    propiedades.push_back(propiedad);
+    // CAMBIO: Agregar a ambas tablas hash para acceso O(1)
+    string nombre = propiedad->getNombre();
+    int posicion = propiedad->getPosicion();
+    
+    propiedadesPorNombre[nombre] = propiedad;
+    propiedadesPorPosicion[posicion] = propiedad;
 }
 
 Propiedad* Banco::buscarPropiedadPorNombre(string nombre) {
-    // Buscar en todas las propiedades
-    for (int i = 0; i < propiedades.size(); i++) {
-        Propiedad* prop = propiedades[i];
-
-        // ¿El nombre coincide?
-        if (prop->getNombre() == nombre) {
-            return prop;  // Encontrada!
-        }
+    // CAMBIO: Búsqueda O(1) en tabla hash
+    auto it = propiedadesPorNombre.find(nombre);
+    
+    if (it != propiedadesPorNombre.end()) {
+        return it->second;  // Encontrada!
     }
 
     // No se encontró
@@ -103,14 +104,11 @@ Propiedad* Banco::buscarPropiedadPorNombre(string nombre) {
 }
 
 Propiedad* Banco::buscarPropiedadPorPosicion(int posicion) {
-    // Buscar en todas las propiedades
-    for (int i = 0; i < propiedades.size(); i++) {
-        Propiedad* prop = propiedades[i];
-
-        // ¿La posición coincide?
-        if (prop->getPosicion() == posicion) {
-            return prop;  // Encontrada!
-        }
+    // CAMBIO: Búsqueda O(1) en tabla hash
+    auto it = propiedadesPorPosicion.find(posicion);
+    
+    if (it != propiedadesPorPosicion.end()) {
+        return it->second;  // Encontrada!
     }
 
     // No se encontró
@@ -118,7 +116,7 @@ Propiedad* Banco::buscarPropiedadPorPosicion(int posicion) {
 }
 
 bool Banco::venderPropiedad(Propiedad* propiedad, Jugador* jugador) {
-    // 1. Validar parámetros
+    // 1. Validar si existe
     if (propiedad == nullptr) {
         cout << "[BANCO] Propiedad invalida" << endl;
         return false;
@@ -155,7 +153,7 @@ bool Banco::venderPropiedad(Propiedad* propiedad, Jugador* jugador) {
         // El banco recibe el dinero
         dineroTotal += precio;
 
-        // Asignar propiedad al jugador (SIN cobrar de nuevo)
+        // Asignar propiedad al jugador
         propiedad->asignarDueno(jugador);
 
         cout << "[BANCO] " << jugador->getNombre() << " compra "
@@ -167,7 +165,7 @@ bool Banco::venderPropiedad(Propiedad* propiedad, Jugador* jugador) {
 }
 
 bool Banco::comprarPropiedad(Propiedad* propiedad, Jugador* jugador) {
-    // 1. Validar parámetros
+    // 1. Validar si exsite
     if (propiedad == nullptr) {
         return false;
     }
@@ -207,9 +205,9 @@ vector<Propiedad*> Banco::obtenerPropiedadesDe(Jugador* jugador) {
         return resultado;  // Vector vacío
     }
 
-    // Buscar todas las propiedades de este jugador
-    for (int i = 0; i < propiedades.size(); i++) {
-        Propiedad* prop = propiedades[i];
+    //Iterar sobre tabla hash
+    for (auto& par : propiedadesPorNombre) {
+        Propiedad* prop = par.second;
         Jugador* dueno = prop->getDueno();
 
         // ¿Esta propiedad es del jugador?
@@ -224,9 +222,9 @@ vector<Propiedad*> Banco::obtenerPropiedadesDe(Jugador* jugador) {
 vector<Propiedad*> Banco::obtenerPropiedadesDisponibles() {
     vector<Propiedad*> resultado;
 
-    // Buscar propiedades sin dueño
-    for (int i = 0; i < propiedades.size(); i++) {
-        Propiedad* prop = propiedades[i];
+    // Iterar sobre tabla hash
+    for (auto& par : propiedadesPorNombre) { //par representa la pareja key y value
+        Propiedad* prop = par.second;
 
         // ¿Está disponible?
         if (prop->estaDisponible()) {
@@ -240,7 +238,7 @@ vector<Propiedad*> Banco::obtenerPropiedadesDisponibles() {
 // ========== CONSTRUCCIÓN ==========
 
 bool Banco::venderCasa(Jugador* jugador, Propiedad* propiedad) {
-    // 1. Validar parámetros
+    // 1. Validar si existe
     if (jugador == nullptr || propiedad == nullptr) {
         return false;
     }
@@ -371,6 +369,7 @@ void Banco::mostrarEstado() const {
     cout << "Dinero:   $" << dineroTotal << endl;
     cout << "Casas:    " << casasDisponibles << endl;
     cout << "Hoteles:  " << hotelesDisponibles << endl;
+    cout << "Propiedades registradas: " << propiedadesPorNombre.size() << endl;
     cout << "============================" << endl;
 }
 
@@ -379,9 +378,9 @@ void Banco::mostrarPropiedadesDisponibles() const {
 
     int contador = 0;
 
-    // Mostrar cada propiedad disponible
-    for (int i = 0; i < propiedades.size(); i++) {
-        Propiedad* prop = propiedades[i];
+    // CAMBIO: Iterar sobre tabla hash
+    for (auto& par : propiedadesPorNombre) {
+        Propiedad* prop = par.second;
 
         // ¿Está disponible?
         if (prop->estaDisponible()) {

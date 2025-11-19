@@ -1,7 +1,7 @@
 #ifndef MAZOCARTAS_H
 #define MAZOCARTAS_H
 
-#include <vector>
+#include <queue>
 #include <string>
 using namespace std;
 
@@ -49,34 +49,34 @@ public:
 };
 
 /**
- * @brief TAD MazoCartas - Vector Simple
+ * TAD MazoCartas - COLA (Queue)
  * Gestiona las cartas de Arca Comunal o Casualidad.
+ * Las cartas se colocan debajo del montón después de leídas (comportamiento de cola).
  */
 class MazoCartas {
 private:
-    vector<Carta*> cartas;
+    queue<Carta*> cartas;  // Cola de cartas - CAMBIO: de vector a queue
     string tipo;
-    int indiceActual;
 
 public:
     //pre: tipoDeMazo no vacío
-    //post: MazoCartas creado con tipo asignado, indiceActual = 0, vector vacío
+    //post: MazoCartas creado con tipo asignado, cola vacía
     MazoCartas(string tipoDeMazo);
 
     //pre: MazoCartas existe
-    //post: todas las cartas eliminadas, vector vaciado
+    //post: todas las cartas eliminadas, cola vaciada
     ~MazoCartas();
 
     //pre: carta != nullptr
-    //post: carta agregada al vector cartas
+    //post: carta agregada al final de la cola
     void agregarCarta(Carta* carta);
 
     //pre: cartas.size() > 0
-    //post: retorna carta en indiceActual, indiceActual++, si indiceActual >= size() entonces barajar y reiniciar
+    //post: retorna carta al frente de la cola, carta removida del frente y agregada al final (comportamiento de cola circular)
     Carta* sacarCarta();
 
     //pre: ninguna
-    //post: cartas mezcladas aleatoriamente, indiceActual = 0
+    //post: cartas mezcladas aleatoriamente
     void barajar();
 
     //pre: ninguna
@@ -84,11 +84,11 @@ public:
     string getTipo() const;
 
     //pre: mazo vacío
-    //post: 16 cartas de Arca Comunal creadas y agregadas, mazo barajado
+    //post: 16 cartas de Arca Comunal creadas y agregadas a la cola, mazo barajado
     void crearMazoArcaComunal();
 
     //pre: mazo vacío
-    //post: 16 cartas de Casualidad creadas y agregadas, mazo barajado
+    //post: 16 cartas de Casualidad creadas y agregadas a la cola, mazo barajado
     void crearMazoCasualidad();
 };
 

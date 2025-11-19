@@ -123,6 +123,23 @@ public:
     //post: retorna posicion del jugador (0-39)
     int getPosicion() const;
 
+    // ===== SETTERS (para restaurar estado) =====
+    //pre: nuevoDinero >= 0
+    //post: dinero = nuevoDinero
+    void setDinero(int nuevoDinero);
+
+    //pre: 0 <= nuevaPosicion < 40
+    //post: posicion = nuevaPosicion
+    void setPosicion(int nuevaPosicion);
+
+    //pre: ninguna
+    //post: enCarcel = enPrision, si !enPrision entonces turnosEnCarcel = 0
+    void setEstadoCarcel(bool enPrision, int turnos = 0);
+
+    //pre: ninguna
+    //post: activo = nuevoEstado
+    void setActivo(bool nuevoEstado);
+
     // ===== INFORMACIÓN =====
     //pre: ninguna
     //post: estado completo del jugador mostrado en consola

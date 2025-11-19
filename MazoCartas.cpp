@@ -1,6 +1,7 @@
 #include "MazoCartas.h"
 #include "Jugador.h"
 #include <iostream>
+#include <vector>
 #include <algorithm>
 #include <cstdlib>
 
@@ -45,22 +46,24 @@ int Carta::getValor() const {
     return valor;
 }
 
-// ========== IMPLEMENTACION DE MAZOCARTAS ==========
+// ========== IMPLEMENTACION DE MAZOCARTAS (COLA) ==========
 
 MazoCartas::MazoCartas(string tipoDeMazo)
-    : tipo(tipoDeMazo), indiceActual(0) {
+    : tipo(tipoDeMazo) {
 }
 
 MazoCartas::~MazoCartas() {
-    for (Carta* c : cartas) {
-        delete c;
+    // Vaciar la cola y liberar memoria
+    while (!cartas.empty()) {
+        Carta* carta = cartas.front();
+        cartas.pop();
+        delete carta;
     }
-    cartas.clear();
 }
 
 void MazoCartas::agregarCarta(Carta* carta) {
     if (carta == nullptr) return;
-    cartas.push_back(carta);
+    cartas.push(carta);  // Agregar al final de la cola
 }
 
 Carta* MazoCartas::sacarCarta() {
@@ -69,15 +72,12 @@ Carta* MazoCartas::sacarCarta() {
         return nullptr;
     }
 
-    // Si llegamos al final, rebarajar
-    if (indiceActual >= cartas.size()) {
-        cout << "Rebarajando " << tipo << "..." << endl;
-        barajar();
-        indiceActual = 0;
-    }
+    // Tomar carta del frente de la cola
+    Carta* carta = cartas.front();
+    cartas.pop();  // Remover del frente
 
-    Carta* carta = cartas[indiceActual];
-    indiceActual++;
+    // COMPORTAMIENTO DE COLA: colocar la carta al final después de usarla
+    cartas.push(carta);
 
     return carta;
 }
@@ -85,8 +85,21 @@ Carta* MazoCartas::sacarCarta() {
 void MazoCartas::barajar() {
     if (cartas.empty()) return;
 
-    random_shuffle(cartas.begin(), cartas.end());
-    indiceActual = 0;
+    // Convertir cola a vector temporal para barajar
+    vector<Carta*> temp;
+    
+    while (!cartas.empty()) {
+        temp.push_back(cartas.front());
+        cartas.pop();
+    }
+
+    // Barajar el vector con randomshuffle
+    random_shuffle(temp.begin(), temp.end());
+
+    // Volver a llenar la cola
+    for (Carta* c : temp) {
+        cartas.push(c);
+    }
 
     cout << "Mazo '" << tipo << "' barajado" << endl;
 }

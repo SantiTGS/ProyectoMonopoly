@@ -5,6 +5,7 @@
 #include "Jugador.h"
 #include <vector>
 #include <string>
+#include <unordered_map>  // CAMBIO: Tabla Hash para propiedades
 using namespace std;
 
 /**
@@ -23,16 +24,18 @@ private:
     int hotelesDisponibles;   // Máximo 12 hoteles
     int bonoPasarSalida;      // Bono al pasar por Salida: $200
 
-    vector<Propiedad*> propiedades;  // Todas las propiedades del juego
+    //Tabla Hash para registro de propiedades (acceso directo O(1))
+    unordered_map<string, Propiedad*> propiedadesPorNombre;    // Búsqueda por nombre
+    unordered_map<int, Propiedad*> propiedadesPorPosicion;     // Búsqueda por posición
 
 public:
     // Constructor con dinero inicial del banco
     //pre: dineroInicial >= 0
-    //post: Banco creado con dineroInicial, 32 casas, 12 hoteles, bonoPasarSalida = 200
-    Banco(int dineroInicial = 1000000);
+    //post: Banco creado con dineroInicial, 32 casas, 12 hoteles, bonoPasarSalida = 200, tablas hash vacías
+    Banco(int dineroInicial = 100000);
 
     //pre: Banco existe
-    //post: Memoria liberada, vector de propiedades vaciado
+    //post: Memoria liberada, tablas hash vaciadas
     ~Banco();
 
     // ===== TRANSACCIONES DE DINERO =====
@@ -52,17 +55,17 @@ public:
     //post: jugador recibe bonoPasarSalida * 2 ($400)
     void pagarBonoCaerSalida(Jugador* jugador);
 
-    // ===== GESTIÓN DE PROPIEDADES =====
+    // ===== GESTIÓN DE PROPIEDADES (CON TABLA HASH) =====
     //pre: propiedad != nullptr
-    //post: propiedad agregada al vector de propiedades
+    //post: propiedad agregada a ambas tablas hash (por nombre y por posición)
     void registrarPropiedad(Propiedad* propiedad);
 
     //pre: nombre es un string válido
-    //post: retorna puntero a propiedad con ese nombre, o nullptr si no existe
+    //post: retorna puntero a propiedad con ese nombre usando tabla hash O(1), o nullptr si no existe
     Propiedad* buscarPropiedadPorNombre(string nombre);
 
     //pre: 0 <= posicion < 40
-    //post: retorna puntero a propiedad en esa posición, o nullptr si no existe
+    //post: retorna puntero a propiedad en esa posición usando tabla hash O(1), o nullptr si no existe
     Propiedad* buscarPropiedadPorPosicion(int posicion);
 
     // Compra/venta (jugador <-> banco)
@@ -76,11 +79,11 @@ public:
 
     // Consultas
     //pre: jugador != nullptr
-    //post: retorna vector con todas las propiedades donde jugador es dueño
+    //post: retorna vector con todas las propiedades donde jugador es dueño (itera sobre tabla hash)
     vector<Propiedad*> obtenerPropiedadesDe(Jugador* jugador);
 
     //pre: ninguna
-    //post: retorna vector con todas las propiedades sin dueño
+    //post: retorna vector con todas las propiedades sin dueño (itera sobre tabla hash)
     vector<Propiedad*> obtenerPropiedadesDisponibles();
 
     // ===== CONSTRUCCIÓN =====
@@ -116,7 +119,7 @@ public:
     void mostrarEstado() const;
 
     //pre: ninguna
-    //post: imprime lista de propiedades sin dueño
+    //post: imprime lista de propiedades sin dueño (itera sobre tabla hash)
     void mostrarPropiedadesDisponibles() const;
 
     //pre: jugador != nullptr

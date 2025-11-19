@@ -193,6 +193,33 @@ int Jugador::getPosicion() const {
     return posicion;
 }
 
+// ========== SETTERS (para restaurar estado) ==========
+
+void Jugador::setDinero(int nuevoDinero) {
+    if (nuevoDinero >= 0) {
+        dinero = nuevoDinero;
+    }
+}
+
+void Jugador::setPosicion(int nuevaPosicion) {
+    if (nuevaPosicion >= 0 && nuevaPosicion < 40) {
+        posicion = nuevaPosicion;
+    }
+}
+
+void Jugador::setEstadoCarcel(bool enPrision, int turnos) {
+    enCarcel = enPrision;
+    if (enPrision) {
+        turnosEnCarcel = turnos;
+    } else {
+        turnosEnCarcel = 0;
+    }
+}
+
+void Jugador::setActivo(bool nuevoEstado) {
+    activo = nuevoEstado;
+}
+
 // ========== INFORMACIÓN ==========
 
 void Jugador::mostrarEstado() const {

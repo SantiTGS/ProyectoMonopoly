@@ -91,6 +91,12 @@ build CMakeFiles/monopoly.dir/Banco.cpp.obj: CXX_COMPILER__monopoly_unscanned_De
   OBJECT_DIR = CMakeFiles\monopoly.dir
   OBJECT_FILE_DIR = CMakeFiles\monopoly.dir
 
+build CMakeFiles/monopoly.dir/EstadoJuego.cpp.obj: CXX_COMPILER__monopoly_unscanned_Debug C$:/Users/57318/OneDrive/Escritorio/ProyectoMonopoly/EstadoJuego.cpp || cmake_object_order_depends_target_monopoly
+  DEP_FILE = CMakeFiles\monopoly.dir\EstadoJuego.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\monopoly.dir
+  OBJECT_FILE_DIR = CMakeFiles\monopoly.dir
+
 build CMakeFiles/monopoly.dir/Juego.cpp.obj: CXX_COMPILER__monopoly_unscanned_Debug C$:/Users/57318/OneDrive/Escritorio/ProyectoMonopoly/Juego.cpp || cmake_object_order_depends_target_monopoly
   DEP_FILE = CMakeFiles\monopoly.dir\Juego.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
@@ -105,7 +111,7 @@ build CMakeFiles/monopoly.dir/Juego.cpp.obj: CXX_COMPILER__monopoly_unscanned_De
 #############################################
 # Link the executable monopoly.exe
 
-build monopoly.exe: CXX_EXECUTABLE_LINKER__monopoly_Debug CMakeFiles/monopoly.dir/main.cpp.obj CMakeFiles/monopoly.dir/Jugador.cpp.obj CMakeFiles/monopoly.dir/Casilla.cpp.obj CMakeFiles/monopoly.dir/Tablero.cpp.obj CMakeFiles/monopoly.dir/Propiedad.cpp.obj CMakeFiles/monopoly.dir/MazoCartas.cpp.obj CMakeFiles/monopoly.dir/Banco.cpp.obj CMakeFiles/monopoly.dir/Juego.cpp.obj
+build monopoly.exe: CXX_EXECUTABLE_LINKER__monopoly_Debug CMakeFiles/monopoly.dir/main.cpp.obj CMakeFiles/monopoly.dir/Jugador.cpp.obj CMakeFiles/monopoly.dir/Casilla.cpp.obj CMakeFiles/monopoly.dir/Tablero.cpp.obj CMakeFiles/monopoly.dir/Propiedad.cpp.obj CMakeFiles/monopoly.dir/MazoCartas.cpp.obj CMakeFiles/monopoly.dir/Banco.cpp.obj CMakeFiles/monopoly.dir/EstadoJuego.cpp.obj CMakeFiles/monopoly.dir/Juego.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\monopoly.dir

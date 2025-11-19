@@ -10,6 +10,7 @@ void mostrarComandos() {
     cout << "  propiedades    - Ver tus propiedades" << endl;
     cout << "  casa [nombre]  - Construir casa" << endl;
     cout << "  hotel [nombre] - Construir hotel" << endl;
+    cout << "  deshacer       - Deshacer ultima jugada (PILA)" << endl;  // CAMBIO: Nuevo comando
     cout << "  estado         - Ver estado del juego" << endl;
     cout << "  terminar       - Terminar turno" << endl;
     cout << "  ayuda          - Mostrar comandos" << endl;
@@ -19,6 +20,13 @@ void mostrarComandos() {
 int main() {
     cout << "\n========================================" << endl;
     cout << "         MONOPOLY - ESTRUCTURAS DE DATOS" << endl;
+    cout << "========================================" << endl;
+    cout << "\nEstructuras de datos implementadas:" << endl;
+    cout << "  * Lista Circular Doblemente Enlazada (Tablero)" << endl;
+    cout << "  * Tabla Hash / unordered_map (Propiedades)" << endl;  // CAMBIO
+    cout << "  * Cola / queue (Mazos de Cartas)" << endl;  // CAMBIO
+    cout << "  * Pila / stack (Estados del Juego)" << endl;  // CAMBIO
+    cout << "  * Vector / STL (Jugadores)" << endl;
     cout << "========================================\n" << endl;
 
     Juego juego;
@@ -75,6 +83,9 @@ int main() {
             } else {
                 cout << "Uso: hotel [nombre propiedad]" << endl;
             }
+
+        } else if (comando == "deshacer") {  // CAMBIO: Nuevo comando
+            juego.deshacerJugada();
 
         } else if (comando == "estado") {
             juego.mostrarEstado();

@@ -11,6 +11,7 @@ set(SOURCE_FILES
         Propiedad.cpp
         MazoCartas.cpp
         Banco.cpp
+        EstadoJuego.cpp
         Juego.cpp
 )
 

@@ -9,6 +9,7 @@ Juego::Juego() : turnoActual(0), juegoTerminado(false), dado1(0), dado2(0) {
     banco = nullptr;
     arcaComunal = nullptr;
     casualidad = nullptr;
+    pilaEstados = nullptr;
 }
 
 Juego::~Juego() {
@@ -19,6 +20,7 @@ Juego::~Juego() {
     delete banco;
     delete arcaComunal;
     delete casualidad;
+    delete pilaEstados;
 }
 
 void Juego::inicializar() {
@@ -28,6 +30,7 @@ void Juego::inicializar() {
 
     tablero = new Tablero();
     banco = new Banco();
+    pilaEstados = new PilaEstados(20);
 
     arcaComunal = new MazoCartas("Arca Comunal");
     arcaComunal->crearMazoArcaComunal();
@@ -35,7 +38,7 @@ void Juego::inicializar() {
     casualidad = new MazoCartas("Casualidad");
     casualidad->crearMazoCasualidad();
 
-    // Registrar propiedades del tablero en el banco
+    // Registrar propiedades del tablero en el banco (TABLA HASH)
     for (int i = 0; i < 40; i++) {
         Casilla* c = tablero->obtenerCasilla(i);
         int tipo = c->getTipo();
@@ -60,6 +63,9 @@ void Juego::agregarJugador(string nombre) {
 void Juego::iniciar() {
     cout << "\nInicia el juego con " << jugadores.size() << " jugadores!" << endl;
     turnoActual = 0;
+    
+//guardar estado inicial
+    guardarEstadoActual();
 }
 
 void Juego::procesarTurno() {
@@ -100,6 +106,9 @@ void Juego::tirarDados() {
         cout << "No puedes tirar, estas en carcel" << endl;
         return;
     }
+
+    // estado antes de tirar
+    guardarEstadoActual();
 
     int total = lanzarDados();
     cout << "Dados: [" << dado1 << "] [" << dado2 << "] = " << total << endl;
@@ -149,6 +158,9 @@ void Juego::tirarDados() {
 }
 
 void Juego::comprarPropiedad() {
+    //Guardar estado antes de comprar
+    guardarEstadoActual();
+    
     Jugador* actual = getJugadorActual();
     Casilla* casilla = tablero->obtenerCasilla(actual->getPosicion());
     
@@ -171,7 +183,12 @@ void Juego::comprarPropiedad() {
 }
 
 void Juego::construirCasa(string nombrePropiedad) {
+    // Guardar estado antes de construir
+    guardarEstadoActual();
+    
     Jugador* actual = getJugadorActual();
+    
+    // Búsqueda O(1) en tabla hash
     Propiedad* prop = banco->buscarPropiedadPorNombre(nombrePropiedad);
 
     if (!prop) {
@@ -188,7 +205,12 @@ void Juego::construirCasa(string nombrePropiedad) {
 }
 
 void Juego::construirHotel(string nombrePropiedad) {
+    // Guardar estado antes de construir
+    guardarEstadoActual();
+    
     Jugador* actual = getJugadorActual();
+    
+    // Búsqueda O(1) en tabla hash
     Propiedad* prop = banco->buscarPropiedadPorNombre(nombrePropiedad);
 
     if (!prop) {
@@ -205,7 +227,12 @@ void Juego::construirHotel(string nombrePropiedad) {
 }
 
 void Juego::hipotecar(string nombrePropiedad) {
+    // Guardar estado antes de hipotecar
+    guardarEstadoActual();
+    
     Jugador* actual = getJugadorActual();
+    
+    // Búsqueda O(1) en tabla hash
     Propiedad* prop = banco->buscarPropiedadPorNombre(nombrePropiedad);
 
     if (!prop) {
@@ -221,6 +248,21 @@ void Juego::hipotecar(string nombrePropiedad) {
     prop->hipotecar();
 }
 
+//Nueva función para deshacer jugada
+void Juego::deshacerJugada() {
+    if (pilaEstados->estaVacia()) {
+        cout << "\n[DESHACER] No hay jugadas para deshacer" << endl;
+        return;
+    }
+    
+    cout << "\n[DESHACER] Deshaciendo ultima jugada..." << endl;
+    
+    EstadoJuego estadoAnterior = pilaEstados->restaurarEstado();
+    restaurarEstado(estadoAnterior);
+    
+    cout << "[DESHACER] Jugada deshecha exitosamente!" << endl;
+}
+
 void Juego::mostrarEstado() {
     cout << "\n=== ESTADO DEL JUEGO ===" << endl;
 
@@ -233,6 +275,7 @@ void Juego::mostrarEstado() {
     }
 
     cout << "\nTurno de: " << getJugadorActual()->getNombre() << endl;
+    cout << "Estados guardados: " << pilaEstados->size() << "/10" << endl;  // CAMBIO: Mostrar pila
 }
 
 void Juego::mostrarPropiedades() {
@@ -291,4 +334,37 @@ void Juego::mostrarGanador() {
         cout << "\n=== GANADOR ===" << endl;
         cout << ganador->getNombre() << " gana con $" << maxPatrimonio << endl;
     }
+}
+
+// ========== FUNCIONES PRIVADAS PARA MANEJO DE ESTADO ==========
+
+void Juego::guardarEstadoActual() {
+    EstadoJuego estadoActual(jugadores, turnoActual, 
+                             banco->getCasasDisponibles(), 
+                             banco->getHotelesDisponibles());
+    pilaEstados->guardarEstado(estadoActual);
+}
+
+void Juego::restaurarEstado(const EstadoJuego& estado) {
+    // Restaurar turno
+    turnoActual = estado.getTurnoActual();
+    
+    // Restaurar estado de jugadores
+    vector<EstadoJugador> estadosJugadores = estado.getEstadosJugadores();
+    
+    for (int i = 0; i < jugadores.size() && i < estadosJugadores.size(); i++) {
+        Jugador* jugador = jugadores[i];
+        EstadoJugador& estadoJug = estadosJugadores[i];
+        
+        // APLICAR los cambios al jugador
+        jugador->setDinero(estadoJug.dinero);
+        jugador->setPosicion(estadoJug.posicion);
+        jugador->setEstadoCarcel(estadoJug.enCarcel, estadoJug.turnosEnCarcel);
+        jugador->setActivo(estadoJug.activo);
+        
+        cout << "[RESTAURAR] " << jugador->getNombre() 
+             << " restaurado a posicion " << estadoJug.posicion 
+             << " con $" << estadoJug.dinero << endl;
+    }
+
 }
