@@ -1,0 +1,294 @@
+#include "Juego.h"
+#include "Propiedad.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+Juego::Juego() : turnoActual(0), juegoTerminado(false), dado1(0), dado2(0) {
+    tablero = nullptr;
+    banco = nullptr;
+    arcaComunal = nullptr;
+    casualidad = nullptr;
+}
+
+Juego::~Juego() {
+    for (Jugador* j : jugadores) {
+        delete j;
+    }
+    delete tablero;
+    delete banco;
+    delete arcaComunal;
+    delete casualidad;
+}
+
+void Juego::inicializar() {
+    srand(time(0));
+
+    cout << "Inicializando Monopoly..." << endl;
+
+    tablero = new Tablero();
+    banco = new Banco();
+
+    arcaComunal = new MazoCartas("Arca Comunal");
+    arcaComunal->crearMazoArcaComunal();
+
+    casualidad = new MazoCartas("Casualidad");
+    casualidad->crearMazoCasualidad();
+
+    // Registrar propiedades del tablero en el banco
+    for (int i = 0; i < 40; i++) {
+        Casilla* c = tablero->obtenerCasilla(i);
+        int tipo = c->getTipo();
+        
+        if (tipo == TIPO_PROPIEDAD || tipo == TIPO_ESTACION || tipo == TIPO_SERVICIO) {
+            Propiedad* prop = dynamic_cast<Propiedad*>(c);
+            if (prop) {
+                banco->registrarPropiedad(prop);
+            }
+        }
+    }
+
+    cout << "Juego listo!" << endl;
+}
+
+void Juego::agregarJugador(string nombre) {
+    Jugador* j = new Jugador(nombre, 1500);
+    jugadores.push_back(j);
+    cout << nombre << " se unio al juego" << endl;
+}
+
+void Juego::iniciar() {
+    cout << "\nInicia el juego con " << jugadores.size() << " jugadores!" << endl;
+    turnoActual = 0;
+}
+
+void Juego::procesarTurno() {
+    Jugador* actual = getJugadorActual();
+
+    if (!actual->estaActivo()) {
+        terminarTurno();
+        return;
+    }
+
+    cout << "\n=== Turno de " << actual->getNombre() << " ===" << endl;
+    cout << "Posicion: " << actual->getPosicion() << endl;
+    cout << "Dinero: $" << actual->getDinero() << endl;
+
+    if (actual->estaEnCarcel()) {
+        cout << actual->getNombre() << " esta en carcel (turno "
+             << actual->getTurnosEnCarcel() << "/3)" << endl;
+
+        actual->incrementarTurnosCarcel();
+
+        if (actual->getTurnosEnCarcel() >= 3) {
+            cout << actual->getNombre() << " sale de la carcel" << endl;
+            actual->salirDeCarcel();
+        }
+    }
+}
+
+int Juego::lanzarDados() {
+    dado1 = (rand() % 6) + 1;
+    dado2 = (rand() % 6) + 1;
+    return dado1 + dado2;
+}
+
+void Juego::tirarDados() {
+    Jugador* actual = getJugadorActual();
+
+    if (actual->estaEnCarcel()) {
+        cout << "No puedes tirar, estas en carcel" << endl;
+        return;
+    }
+
+    int total = lanzarDados();
+    cout << "Dados: [" << dado1 << "] [" << dado2 << "] = " << total << endl;
+
+    if (dado1 == dado2) {
+        cout << "Dobles!" << endl;
+    }
+
+    actual->mover(total);
+
+    Casilla* casilla = tablero->obtenerCasilla(actual->getPosicion());
+    cout << "Caiste en: " << casilla->getNombre() << endl;
+
+    // Ejecutar accion de la casilla
+    int tipo = casilla->getTipo();
+
+    if (tipo == TIPO_PROPIEDAD || tipo == TIPO_ESTACION || tipo == TIPO_SERVICIO) {
+        Propiedad* prop = dynamic_cast<Propiedad*>(casilla);
+        if (prop) {
+            if (prop->estaDisponible()) {
+                cout << "Disponible por $" << prop->getPrecioCompra() << endl;
+                cout << "Usa 'comprar' para adquirirla" << endl;
+            } else if (prop->getDueno() != actual) {
+                int renta = prop->calcularRenta();
+                cout << "Pagas renta de $" << renta << " a "
+                     << prop->getDueno()->getNombre() << endl;
+                actual->pagarRenta(renta, prop->getDueno());
+            } else {
+                cout << "Es tu propiedad" << endl;
+            }
+        }
+    } else if (tipo == TIPO_ARCA_COMUNAL) {
+        Carta* carta = arcaComunal->sacarCarta();
+        if (carta) {
+            cout << "Carta Arca Comunal: " << carta->getDescripcion() << endl;
+            carta->ejecutar(actual);
+        }
+    } else if (tipo == TIPO_CASUALIDAD) {
+        Carta* carta = casualidad->sacarCarta();
+        if (carta) {
+            cout << "Carta Casualidad: " << carta->getDescripcion() << endl;
+            carta->ejecutar(actual);
+        }
+    } else {
+        casilla->accionAlCaer(actual);
+    }
+}
+
+void Juego::comprarPropiedad() {
+    Jugador* actual = getJugadorActual();
+    Casilla* casilla = tablero->obtenerCasilla(actual->getPosicion());
+    
+    int tipo = casilla->getTipo();
+
+    if (tipo != TIPO_PROPIEDAD && tipo != TIPO_ESTACION && tipo != TIPO_SERVICIO) {
+        cout << "No es una propiedad" << endl;
+        return;
+    }
+
+    Propiedad* prop = dynamic_cast<Propiedad*>(casilla);
+    if (!prop) return;
+
+    if (!prop->estaDisponible()) {
+        cout << "Ya tiene dueno" << endl;
+        return;
+    }
+
+    banco->venderPropiedad(prop, actual);
+}
+
+void Juego::construirCasa(string nombrePropiedad) {
+    Jugador* actual = getJugadorActual();
+    Propiedad* prop = banco->buscarPropiedadPorNombre(nombrePropiedad);
+
+    if (!prop) {
+        cout << "Propiedad no encontrada" << endl;
+        return;
+    }
+
+    if (prop->getDueno() != actual) {
+        cout << "No eres dueno" << endl;
+        return;
+    }
+
+    banco->venderCasa(actual, prop);
+}
+
+void Juego::construirHotel(string nombrePropiedad) {
+    Jugador* actual = getJugadorActual();
+    Propiedad* prop = banco->buscarPropiedadPorNombre(nombrePropiedad);
+
+    if (!prop) {
+        cout << "Propiedad no encontrada" << endl;
+        return;
+    }
+
+    if (prop->getDueno() != actual) {
+        cout << "No eres dueno" << endl;
+        return;
+    }
+
+    banco->venderHotel(actual, prop);
+}
+
+void Juego::hipotecar(string nombrePropiedad) {
+    Jugador* actual = getJugadorActual();
+    Propiedad* prop = banco->buscarPropiedadPorNombre(nombrePropiedad);
+
+    if (!prop) {
+        cout << "Propiedad no encontrada" << endl;
+        return;
+    }
+
+    if (prop->getDueno() != actual) {
+        cout << "No eres dueno" << endl;
+        return;
+    }
+
+    prop->hipotecar();
+}
+
+void Juego::mostrarEstado() {
+    cout << "\n=== ESTADO DEL JUEGO ===" << endl;
+
+    for (Jugador* j : jugadores) {
+        if (j->estaActivo()) {
+            cout << j->getNombre() << ": $" << j->getDinero()
+                 << " | Pos:" << j->getPosicion()
+                 << " | Props:" << j->contarPropiedades() << endl;
+        }
+    }
+
+    cout << "\nTurno de: " << getJugadorActual()->getNombre() << endl;
+}
+
+void Juego::mostrarPropiedades() {
+    Jugador* actual = getJugadorActual();
+    vector<Propiedad*> props = actual->getPropiedades();
+
+    if (props.empty()) {
+        cout << "No tienes propiedades" << endl;
+        return;
+    }
+
+    cout << "\nTus propiedades:" << endl;
+    for (Propiedad* p : props) {
+        cout << "  - " << p->getNombre() << " | Casas:" << p->getNumCasas()
+             << " | Hoteles:" << p->getNumHoteles() << endl;
+    }
+}
+
+void Juego::terminarTurno() {
+    turnoActual = (turnoActual + 1) % jugadores.size();
+
+    // Verificar si solo queda un jugador activo
+    int activos = 0;
+    for (Jugador* j : jugadores) {
+        if (j->estaActivo()) activos++;
+    }
+
+    if (activos <= 1) {
+        juegoTerminado = true;
+    }
+}
+
+bool Juego::haTerminado() {
+    return juegoTerminado;
+}
+
+Jugador* Juego::getJugadorActual() {
+    return jugadores[turnoActual];
+}
+
+void Juego::mostrarGanador() {
+    int maxPatrimonio = 0;
+    Jugador* ganador = nullptr;
+
+    for (Jugador* j : jugadores) {
+        if (j->estaActivo()) {
+            int patrimonio = banco->calcularFortuna(j);
+            if (patrimonio > maxPatrimonio) {
+                maxPatrimonio = patrimonio;
+                ganador = j;
+            }
+        }
+    }
+
+    if (ganador) {
+        cout << "\n=== GANADOR ===" << endl;
+        cout << ganador->getNombre() << " gana con $" << maxPatrimonio << endl;
+    }
+}

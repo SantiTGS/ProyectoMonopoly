@@ -7,13 +7,15 @@ using namespace std;
 
 class Jugador;
 
-// Accion de las cartas 
+// Tipos de accion de las cartas
 const int ACCION_RECIBIR_DINERO = 0;
 const int ACCION_PAGAR_DINERO = 1;
 const int ACCION_MOVER_A_POSICION = 2;
 const int ACCION_IR_CARCEL = 3;
 
-
+/**
+ * @brief Carta del juego
+ */
 class Carta {
 private:
     string descripcion;
@@ -31,6 +33,10 @@ public:
     int getValor() const;
 };
 
+/**
+ * @brief TAD MazoCartas - Vector Simple
+ * Gestiona las cartas de Arca Comunal o Casualidad.
+ */
 class MazoCartas {
 private:
     vector<Carta*> cartas;

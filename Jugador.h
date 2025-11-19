@@ -21,7 +21,7 @@ private:
     
 public:
 
-    Jugador(string nombre, int dineroInicial = 1500);
+    Jugador(string nombre, int dineroInicial = 1500); //Cantidad inicial de dinero igual que en el juego real
     
   //deestrucutor se agrega por is algo 
     ~Jugador();

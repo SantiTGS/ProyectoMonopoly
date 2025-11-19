@@ -7,10 +7,20 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeProjectFlavorService">
     <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="monopoly" targetName="monopoly" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -18,7 +28,218 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61983a58-90a5-4f73-b27f-cfd126ded24b" name="Changes" comment="" />
+    <list default="true" id="a8742b92-68fe-4818-b795-19f62a58d88e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../BORRAR/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BORRAR/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BORRAR/Habitacion.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BORRAR/Habitacion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BORRAR/Hotel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BORRAR/Hotel.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Examen1h/Cuenta.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Examen1h/Cuenta.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Grabacion/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Grabacion/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Grabacion/Habitacion.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Grabacion/Habitacion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Grabacion/Hotel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Grabacion/Hotel.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practicaquiz/Aeropuerto.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practicaquiz/Aeropuerto.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practicaquiz/Vuelo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practicaquiz/Vuelo.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/Dragon.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/Dragon.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/Hada.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/Hada.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/MagicalCreature.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/MagicalCreature.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/Quimera.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyecto/Quimera.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QuizAeropuerto/Aeropuerto.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QuizAeropuerto/Aeropuerto.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QuizAeropuerto/Vuelo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QuizAeropuerto/Vuelo.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QuizAeropuerto/aterrizacomopuedas.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7/Habitacion.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7/Habitacion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7/Hotel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7/Hotel.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7AG/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7AG/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7AG/Habitacion.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7AG/Habitacion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7AG/Hotel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7AG/Hotel.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7COMP/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7COMP/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7COMP/Habitacion.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7COMP/Habitacion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7COMP/Hotel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea7COMP/Hotel.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/Banco.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/Banco.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/Clientes.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/Clientes.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/CuentaAhorro.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/CuentaAhorro.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/CuentaAhorros.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/CuentaAhorros.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/CuentaCorriente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/CuentaCorriente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/Cuentas.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8/Cuentas.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Banco/Banco.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Banco/Banco.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Banco/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Banco/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Banco/Cuentas.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Banco/Cuentas.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/.idea/Tarea8Final.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/Banco.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/Banco.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/BancoJaveriano.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/Cuenta.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/Cuenta.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/CuentaAhorros.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/CuentaAhorros.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/CuentaCorriente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/CuentaCorriente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/query/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/reply/cache-v2-7f251ebb4dc26bcda697.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-ef7b1ac0a8b13bfb0b92.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-da2ba9f103a8b1c9dfcb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-d0094a50bb2071803777.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/reply/index-2025-04-02T23-36-05-0163.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/reply/target-Tarea8Final-Debug-eabe36f06b78ed2b9f4d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-7ef91c14dc3dae0986e2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/Tarea8Final.dir/Banco.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/Tarea8Final.dir/Cliente.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/Tarea8Final.dir/Cuenta.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/Tarea8Final.dir/CuentaAhorros.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/Tarea8Final.dir/CuentaCorriente.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/Tarea8Final.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/Tarea8Final.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/json.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tarea8Final/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TareaAcondicionamiento/Punto1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../TareaAcondicionamiento/Punto1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TareaAcondicionamiento/Punto1.h" beforeDir="false" afterPath="$PROJECT_DIR$/../TareaAcondicionamiento/Punto1.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TareaAcondicionamiento/punto2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../TareaAcondicionamiento/punto2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TareaAcondicionamiento/punto2.h" beforeDir="false" afterPath="$PROJECT_DIR$/../TareaAcondicionamiento/punto2.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/.idea/TiposDeDatos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/query/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/cache-v2-3687e6c423610f9ee996.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-a2fa8d014170f59e3548.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-961aed4bde0f453ade2c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-d0094a50bb2071803777.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/index-2025-01-31T17-54-03-0869.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/target-TiposDeDatos-Debug-5dfc8d1d56e2fbd2612b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/target-conversionExplicita-Debug-df54d2fabb7ad273ea80.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/target-conversionTipos-Debug-59a46ed501a3b01e9c60.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/target-usoDeConstantes-Debug-a7cbdcc5f2ba65d69a4c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-7ef91c14dc3dae0986e2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdC/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/3.30.5/CompilerIdCXX/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/TiposDeDatos.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/conversionExplicita.dir/conversionExplícita.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/conversionTipos.dir/conversionTipos.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/conversionTipos.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/CMakeFiles/usoDeConstantes.dir/usoDeConstantes.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/TiposDeDatos.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/conversionExplicita.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/conversionExplícita.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/conversionTipos.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/usoDeConstantes.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TiposDeDatos/cmake-build-debug/usoDeConstantes.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../exam1h/Cuenta.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../exam1h/Cuenta.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examenh/Cuenta.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examenh/Cuenta.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hotelesAGR/Cliente.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hotelesAGR/Cliente.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hotelesAGR/Habitacion.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hotelesAGR/Habitacion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hotelesAGR/Hotel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hotelesAGR/Hotel.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monopoly/Juego.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../monopoly/Juego.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monopoly/Juego.h" beforeDir="false" afterPath="$PROJECT_DIR$/../monopoly/Juego.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pr/Cuenta.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pr/Cuenta.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizpracticoparcial/Estudiante.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizpracticoparcial/Estudiante.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizpracticoparcial/Persona.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizpracticoparcial/Persona.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizpracticoparcial/Profesor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizpracticoparcial/Profesor.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/Aeropuerto.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/Aeropuerto.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/Vuelo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/Vuelo.h" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,51 +248,96 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Banco.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Carta.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Juego.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MazoCartas.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2024" />
+    <option name="minorVersion" value="3.5" />
+    <option name="productBranch" value="Classic" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="35LTool5QjXNsbshBiboh47HkaQ" />
+  <component name="ProjectId" id="357btuC9eFgMIUIxlF8rGwqBFFU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/57318/OneDrive/Escritorio/monopoly",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;CMake Application.monopoly.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/57318/OneDrive/Escritorio/ProyectoMonopoly&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/57318/OneDrive/Escritorio/monopoly/main.cpp&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="monopoly" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="monopoly" TARGET_NAME="monopoly" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="monopoly" RUN_TARGET_NAME="monopoly">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="61983a58-90a5-4f73-b27f-cfd126ded24b" name="Changes" comment="" />
-      <created>1762888531239</created>
+      <changelist id="a8742b92-68fe-4818-b795-19f62a58d88e" name="Changes" comment="" />
+      <created>1762464274365</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1762888531239</updated>
-      <workItem from="1762888533080" duration="680000" />
-      <workItem from="1762889229090" duration="16000" />
-      <workItem from="1762889291991" duration="205000" />
+      <updated>1762464274365</updated>
+      <workItem from="1762464275773" duration="5526000" />
+      <workItem from="1762525647245" duration="445000" />
+      <workItem from="1762526443940" duration="209000" />
+      <workItem from="1762526852053" duration="56000" />
+      <workItem from="1762529785333" duration="2431000" />
+      <workItem from="1762735115208" duration="1829000" />
+      <workItem from="1762740900136" duration="569000" />
+      <workItem from="1762812726570" duration="1037000" />
+      <workItem from="1762814187764" duration="60000" />
+      <workItem from="1762887324631" duration="770000" />
+      <workItem from="1762888156846" duration="289000" />
+      <workItem from="1762888493926" duration="35000" />
+      <workItem from="1762889303689" duration="89000" />
+      <workItem from="1762889500523" duration="459000" />
+      <workItem from="1762890141446" duration="27000" />
+      <workItem from="1762890367566" duration="186000" />
+      <workItem from="1762895939624" duration="362000" />
+      <workItem from="1762961046486" duration="625000" />
+      <workItem from="1763132876355" duration="1260000" />
+      <workItem from="1763510244076" duration="119000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
   </component>
 </project>
