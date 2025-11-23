@@ -57,24 +57,14 @@
       <change beforePath="$PROJECT_DIR$/../Proyecto/Quimera.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proyecto/Quimera.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Banco.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Banco.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Banco.h" beforeDir="false" afterPath="$PROJECT_DIR$/Banco.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Casilla.h" beforeDir="false" afterPath="$PROJECT_DIR$/Casilla.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstadoJuego.h" beforeDir="false" afterPath="$PROJECT_DIR$/EstadoJuego.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Juego.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Juego.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Juego.h" beforeDir="false" afterPath="$PROJECT_DIR$/Juego.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jugador.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Jugador.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jugador.h" beforeDir="false" afterPath="$PROJECT_DIR$/Jugador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MazoCartas.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MazoCartas.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MazoCartas.h" beforeDir="false" afterPath="$PROJECT_DIR$/MazoCartas.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Propiedad.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Propiedad.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Propiedad.h" beforeDir="false" afterPath="$PROJECT_DIR$/Propiedad.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tablero.h" beforeDir="false" afterPath="$PROJECT_DIR$/Tablero.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/monopoly.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/monopoly.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QuizAeropuerto/Aeropuerto.cpp" beforeDir="false" />
@@ -358,6 +348,7 @@
       <workItem from="1763512588314" duration="851000" />
       <workItem from="1763513457043" duration="7000" />
       <workItem from="1763532024019" duration="494000" />
+      <workItem from="1763565258397" duration="5422000" />
     </task>
     <servers />
   </component>

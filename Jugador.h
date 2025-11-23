@@ -35,7 +35,7 @@ private:
 public:
     //pre: nombre no vacío, dineroInicial >= 0
     //post: Jugador creado con nombre, dineroInicial, posicion = 0, enCarcel = false, activo = true
-    Jugador(string nombre, int dineroInicial = 1500);
+    Jugador(string nombre, int dineroInicial = 60);
 
     //pre: Jugador existe
     //post: vector de propiedades vaciado, memoria liberada

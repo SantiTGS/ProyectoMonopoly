@@ -55,7 +55,7 @@ void Juego::inicializar() {
 }
 
 void Juego::agregarJugador(string nombre) {
-    Jugador* j = new Jugador(nombre, 1500);
+    Jugador* j = new Jugador(nombre, 60);
     jugadores.push_back(j);
     cout << nombre << " se unio al juego" << endl;
 }
@@ -94,8 +94,8 @@ void Juego::procesarTurno() {
 }
 
 int Juego::lanzarDados() {
-    dado1 = (rand() % 6) + 1;
-    dado2 = (rand() % 6) + 1;
+    dado1 = 1;
+    dado2 = 2;
     return dado1 + dado2;
 }
 

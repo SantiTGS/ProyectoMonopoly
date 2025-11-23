@@ -11,7 +11,7 @@ class Jugador;
 class Propiedad;
 
 /**
- * @brief Estructura para guardar el estado de un jugador
+ * Estructura para guardar el estado de un jugador
  */
 struct EstadoJugador {
     string nombre;
@@ -32,7 +32,7 @@ struct EstadoJugador {
 };
 
 /**
- * @brief Clase para representar el estado completo del juego en un momento dado
+ * Clase para representar el estado completo del juego en un momento dado
  */
 class EstadoJuego {
 private:

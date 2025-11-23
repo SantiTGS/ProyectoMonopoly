@@ -11,7 +11,6 @@ Jugador::Jugador(string nombre, int dineroInicial)
       posicion(0), 
       enCarcel(false), 
       turnosEnCarcel(0),
-      turnosSinCarcel(0),
       activo(true) {
     cout << nombre << " entra al juego con $" << dinero << endl;
 }

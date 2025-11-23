@@ -10,6 +10,7 @@ void mostrarComandos() {
     cout << "  propiedades    - Ver tus propiedades" << endl;
     cout << "  casa [nombre]  - Construir casa" << endl;
     cout << "  hotel [nombre] - Construir hotel" << endl;
+    cout << "  hipotecar [nombre] - Hipotecar propiedad" << endl;
     cout << "  deshacer       - Deshacer ultima jugada (PILA)" << endl;  // CAMBIO: Nuevo comando
     cout << "  estado         - Ver estado del juego" << endl;
     cout << "  terminar       - Terminar turno" << endl;
@@ -84,7 +85,16 @@ int main() {
                 cout << "Uso: hotel [nombre propiedad]" << endl;
             }
 
-        } else if (comando == "deshacer") {  // CAMBIO: Nuevo comando
+            // ← AGREGAR ESTE BLOQUE NUEVO
+        } else if (comando.substr(0, 9) == "hipotecar") {
+            if (comando.length() > 10) {
+                string prop = comando.substr(10);
+                juego.hipotecar(prop);
+            } else {
+                cout << "Uso: hipotecar [nombre propiedad]" << endl;
+            }
+
+        } else if (comando == "deshacer") {
             juego.deshacerJugada();
 
         } else if (comando == "estado") {
@@ -104,14 +114,4 @@ int main() {
             cout << "Comando desconocido. Escribe 'ayuda'" << endl;
         }
     }
-
-    if (juego.haTerminado()) {
-        juego.mostrarGanador();
-    }
-
-    cout << "\n========================================" << endl;
-    cout << "           FIN DEL JUEGO" << endl;
-    cout << "========================================\n" << endl;
-
-    return 0;
 }

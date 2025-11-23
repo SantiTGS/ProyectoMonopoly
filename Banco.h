@@ -19,7 +19,7 @@ using namespace std;
  */
 class Banco {
 private:
-    int dineroTotal;          // Dinero del banco (ilimitado en la práctica)
+    int dineroTotal;          // Dinero del banco (ilimitado en la práctica(100.000$))
     int casasDisponibles;     // Máximo 32 casas
     int hotelesDisponibles;   // Máximo 12 hoteles
     int bonoPasarSalida;      // Bono al pasar por Salida: $200
